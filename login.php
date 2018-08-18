@@ -1,12 +1,10 @@
-<?php	
-	//$data = Login('roniisuryadii','Roni17081995');
-	//print_r($data);
-	echo "Gramcaster Login\n";
+<?php
+	echo "Gramcaster Login V 3.01\n";
 	echo "Username Gramcaster Anda : ";
 	$ugc=trim(fgets(STDIN));
 	echo "Password Gramcaster Anda : ";
 	$pgc=trim(fgets(STDIN));
-	echo "Loading ... \n";
+	echo "Loading ... ";
 	$data = [
 			'status'            => 'login',
 			'username'          => $ugc,
@@ -15,9 +13,21 @@
 	$result = Submit('http://gramcaster.com/app/v3/IPA.php',$data);
 	$result = json_decode($result);
 	$agent = $result->agent;
-	//$device_id = $result->device_id;
 	$ig_sig_key = $result->ig_sig_key;
 	$sig_key_version = $result->sig_key_version;
+	if($agent != ''){
+		echo "....";
+	}
+	echo ' ';
+	if($ig_sig_key != ''){
+		echo ".....";
+	}
+	echo ' ';
+	if($sig_key_version != ''){
+		echo "......";
+	}
+	echo ' ';
+	echo "\n";
 	if($result->error == false){
 		echo $result->pesan;
 		echo "\n";
